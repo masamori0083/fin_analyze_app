@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'finanalyze'
+    'finanalyze',
+    'django.contrib.humanize'
 ]
 
 MIDDLEWARE = [
@@ -126,3 +127,5 @@ USE_TZ = False
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 STATIC_URL = '/static/'
+
+NUMBER_GROUPING = 3
