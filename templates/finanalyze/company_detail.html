@@ -1,0 +1,33 @@
+{% extends 'finanalyze/base.html' %}
+{% load humanize %}
+
+{% block content %}
+<h1>{{ company_name }}の決算データ</h1>
+<section class="tables">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col">
+				<div class="card">
+					<div class="card-header d-flex">
+						<h3 class="h4">決算推移</h3>
+					</div><!-- card header -->
+					<div class="card-body">
+						<div class="table-responsive">
+							<table class="table table-bordered display nowrap" width="100%">
+								<tr>
+									<th rowspan="2" width="120px"></th>
+									
+									{% for item in fstatement_list reversed %}
+										<th class="center" colspan="2" width="120px"><a href="">{{ item.fiscal_year }}</a></th>
+									{% endfor %}
+										
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+{% endblock content %}

@@ -31,3 +31,43 @@ class Fstatement(models.Model):
 
     def __str__(self):
         return str(self.company) + '決算日：【' + str(self.fiscal_year) + '】'
+
+    # 総資産を計算
+    def bs_total_assets(self):
+        f = self.bs_current_assets + self.bs_fixed_assets + self.bs_deferred_assets
+        return f
+
+    # (流動資産 / 総資産)
+    def current_assets_rate(self):
+        f = self.bs_current_assets / self.bs_total_assets() * 100
+        return f
+
+    # (固定資産 / 総資産)
+    def fixed_assets_rate(self):
+        f = self.bs_deferred_assets / self.bs_total_assets() * 100
+        return f
+
+    # (流動資産 / 総資産)
+    def net_assets_rate(self):
+        f = self.bs_net_assets / self.bs_total_assets() * 100
+        return f
+
+    # (売上総利益 / 総売上)
+    def operating_profit_rate(self):
+        f = self.pl_ordinary_income / self.pl_gross_sales * 100
+        return f
+
+    # (経常利益 / 総売上)
+    def ordinary_income_rate(self):
+        f = self.pl_ordinary_income / self.pl_gross_sales * 100
+        return f
+
+    # (税引前当期純利益 / 総売上)
+    def income_before_tax_rate(self):
+        f = self.pl_income_before_tax / self.pl_gross_sales * 100
+        return f
+
+    # キャッシュフロー合計を計算
+    def cf_total_amount(self):
+        f = self.cf_operating + self.cf_investment + self.cf_finance
+        return f
